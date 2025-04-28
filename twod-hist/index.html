@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D Results</title>
+
+    <script src="../scripts/restriction.js" defer></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/twod-hist-tab.css" />
+    <link rel="stylesheet" href="../style/navi-bar.css" />
+    <link rel="stylesheet" href="../style/set-value-box.css" />
+    <link rel="stylesheet" href="../style/title-vw.css" />
+    <link rel="stylesheet" href="../style/loading-page.css" />
+    <link rel="stylesheet" href="../style/table-vw.css" />
+    <link rel="stylesheet" href="../style/pure-calendar.css" />
+    <link rel="stylesheet" href="../style/utils/mn-picker.css" />
+
+    <!-- Theme Check -->
+    <script>
+      (function () {
+        const isDark = localStorage.getItem("theme") === "dark";
+        if (isDark) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="tab-container">
+      <a class="home-link" href="../">
+        <img src="../icons/back.svg" loading="lazy" />
+      </a>
+
+      <div class="picker-container">
+        <button class="picker-button" id="picker-button">Select Month</button>
+        <div class="picker-dropdown" id="picker-dropdown">
+          <div class="month-grid" id="month-grid"></div>
+          <div class="year-selector">
+            <button id="prev-year">&#9665;</button>
+            <span id="year-display">2024</span>
+            <button id="next-year">&#9655;</button>
+          </div>
+        </div>
+        <img src="../icons/choose-month.svg" loading="lazy" />
+      </div>
+
+      <!-- Tabs -->
+      <div class="tab">
+        <button class="tab-button active" data-target="title-view">
+          <img src="../icons/title-view.svg" loading="lazy" /> Title
+        </button>
+        <button class="tab-button" data-target="table-view">
+          <img src="../icons/table-view.svg" loading="lazy" /> Table
+        </button>
+        <button class="tab-button" data-target="calendar-view">
+          <img src="../icons/calendar-view.svg" loading="lazy" /> Calendar
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-content">
+      <div class="loading-page js-loading-page-twod"></div>
+      <div id="ad-container"></div>
+
+      <div
+        id="title-view"
+        class="tab-panel active title-view-panel js-title-view-panel"
+      ></div>
+      <div id="table-view" class="tab-panel js-table-vw-container"></div>
+      <div
+        id="calendar-view"
+        class="tab-panel calendar-viewing-angle js-calendar-vw-container"
+      >
+        <div id="calendar-container"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center">
+      © <span id="currentYear"></span>. All rights reserved.
+    </div>
+
+    <!-- Tab Switching Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("currentYear").textContent =
+          new Date().getFullYear();
+
+        const tabs = document.querySelectorAll(".tab-button");
+        const panels = document.querySelectorAll(".tab-panel");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Clear all active buttons and panels
+            tabs.forEach((t) => t.classList.remove("active"));
+            panels.forEach((p) => p.classList.remove("active"));
+
+            // Activate clicked tab and corresponding panel
+            tab.classList.add("active");
+            const target = document.getElementById(tab.dataset.target);
+            if (target) {
+              target.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+
+    <script src="../scripts/modern-internet.js" defer></script>
+    <script src="../scripts/twod-title-vw.js" defer></script>
+    <script src="../scripts/table-vw.js" defer></script>
+    <script src="../scripts/calendar-vw.js" defer></script>
+    <script src="../scripts/dark-light-toggle.js" defer></script>
+    <script src="../scripts/utils/mn-picker.js" defer></script>
+  </body>
+</html>

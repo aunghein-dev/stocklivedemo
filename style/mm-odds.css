@@ -1,0 +1,262 @@
+/* === Tablet Styles (768px - 1024px) === */
+@media  (min-width: 768px) {
+  .odds-table td,
+  .odds-table th {
+    font-size: 0.8rem;
+  }
+}
+
+/* === Phone Styles (less than 768px) === */
+@media (max-width: 767px) {
+  .odds-table td,
+  .odds-table th {
+    font-size: 0.73rem;
+  }
+}
+
+.view-root{
+  margin-bottom: -30px;
+}
+
+.root{
+  min-height: 600px;
+}
+
+body {
+  position: relative;
+  padding: 10px;
+  font-family: Roboto,Arial;
+  background-color: var(--bg-color);
+  color: var(--result-month-container);
+  text-align: center;
+  padding-top: 80px;
+ 
+}
+
+/* Option 1: Hide horizontal scrollbar (overflowing content gets clipped) */
+body {
+  overflow-x: hidden;
+}
+
+/* Option 2: Specifically for a container */
+.table-container {
+  overflow-x: hidden;
+}
+
+
+.odds-table {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  color: var(--text-color);
+  background-color: var(--tb-bg-color);
+  border-collapse: separate; /* Needed for border-radius to work */
+  border-spacing: 0;
+  box-shadow: var(--box-bg-shadow);
+  border-radius: 12px;
+  overflow: hidden; /* Clips internal content if necessary */
+  margin-bottom: 80px;
+}
+
+.odds-table, 
+.odds-table * {
+  user-select: text !important;
+  -webkit-user-select: text !important; /* for Safari/Chrome */
+  -moz-user-select: text !important;    /* for Firefox */
+  -ms-user-select: text !important;     /* for IE/Edge */
+}
+
+
+
+/* Add this to visually clip edges */
+thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+th{
+  padding: 10px;
+}
+
+td{
+  padding: 6px;
+  }
+
+th,
+td {
+  font-size: 0.7rem;
+  border: 0.1px dotted rgb(178, 178, 178);
+}
+
+td {
+  font-size: 0.7rem;
+}
+
+tr:nth-child(even) {
+  background-color: var(--hover-color);
+}
+
+tr:hover,
+tr:nth-child(even):hover {
+  background-color: var(--hover-color);
+ 
+  cursor: pointer;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.vote-home {
+  color: green;
+  font-weight: bold;
+}
+
+.vote-away {
+  color: orange;
+  font-weight: bold;
+}
+
+.section-header {
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  font-size: 15px;
+}
+
+th {
+  background-color: var(--header-box-month);
+  border: 0.1px solid #ddd;
+  color: black;
+}
+
+.header-tag{
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-top: 40px;
+}
+
+.match-group-header{
+  opacity: 0.6;
+  color: black;
+  font-weight: 500  ;
+  text-align: center;
+  padding: 6px;
+}
+
+.loading-container{
+  font-family: Roboto, Arial;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 500;
+  z-index: 800;
+  opacity: 0;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.loading-container{
+  transition: opacity 0.5s ease-in-out;
+}
+
+.loading-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.active{
+  opacity: 1;
+  display: block;
+}
+
+.loading-container img{
+  height: 28px;
+  margin-right: 5px;
+}
+
+
+.no-match-view {
+  position: absolute;
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  left: 50%;
+}
+
+.header-container{
+  position: relative;
+  min-height: 40px;
+}
+
+
+
+/* The button should be positioned absolute within the container */
+.copy-button {
+  position: absolute;
+  top: -7px;
+  right: 10px;  /* Slight padding from the right */
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Optional: background color for when hovered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copy-button:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+  transform: scale(1.1); /* Slightly enlarge the button */
+}
+
+.copy-button:active {
+  transform: scale(1); /* Reset scale on click */
+}
+
+/* The icon */
+.copy-button .material-icons {
+  font-size: 24px;
+  color: #007bff;  /* Button icon color */
+  transition: color 0.3s ease;
+}
+
+/* Change icon color on hover */
+.copy-button:hover .material-icons {
+  color: #0056b3;
+}

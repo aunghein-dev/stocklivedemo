@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ball Pwel</title>
+
+    <!-- Defer Restriction Script to load after the DOM is ready -->
+    <script src="../scripts/restriction.js" defer></script>
+
+    <!-- Preload the critical font (Roboto) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+      preload="true"
+      as="font"
+      type="font/woff2"
+    />
+
+    <script>
+      (function () {
+        const isDark = localStorage.getItem("theme") === "dark";
+        if (isDark) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/ball-pwel.css" />
+    <link rel="stylesheet" href="../style/navi-bar.css" />
+    <link rel="stylesheet" href="../style/threed-general.css" />
+  </head>
+
+  <body>
+    <!-- Navigation bar -->
+    <nav class="navi-bar">
+      <a class="home-link" href="../">
+        <img src="../icons/back.svg" loading="lazy" />
+      </a>
+    </nav>
+
+    <!-- Loading page to show while content is loading -->
+    <div class="loading-page active">
+      <img src="../icons/loading.svg" loading="lazy" /> loading...
+    </div>
+
+    <!-- Main Content -->
+    <h1 style="margin-top: 4rem">Ball-pwel Live</h1>
+
+    <div class="filters">
+      <button class="filter-btn active" data-status="all">All</button>
+      <button class="filter-btn" data-status="vs">Upcoming</button>
+      <button class="filter-btn" data-status="live">Live</button>
+      <button class="filter-btn" data-status="finished">Finished</button>
+    </div>
+
+    <div class="matches" id="matches"></div>
+
+    <!-- Modal for video player -->
+    <div class="modal" id="videoModal">
+      <button class="close-btn" onclick="closePlayer()">× Close</button>
+      <video id="videoPlayer" controls autoplay></video>
+    </div>
+
+    <div class="text-center">
+      © <span id="currentYear"></span>. All rights reserved.
+    </div>
+
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
+
+    <!-- Defer other essential scripts -->
+    <script type="module" src="../scripts/dark-light-toggle.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" defer></script>
+    <script src="../scripts/pwel.js" type="module" defer></script>
+  </body>
+</html>
